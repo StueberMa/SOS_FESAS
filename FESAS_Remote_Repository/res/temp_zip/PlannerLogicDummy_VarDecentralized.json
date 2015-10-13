@@ -1,0 +1,14 @@
+{
+	"ID": "1234567890",
+	"NAME": "de.mannheim.wifo2.dummyplanner.PlannerLogicDummy_VarDecentralized",
+	"DESCRIPTION": "Dummy Logic for Planning with 2 dependencies",
+	"LOGIC_TYPE": "PLANNER",
+	"PROGRAMMING_LANGUAGE": "Java",
+	"DEPENDENCIES": ["de.mannheim.wifo2.dummyplanner.PlanData",
+	"de.mannheim.wifo2.dummyplanner.PlanData2",
+	"de.mannheim.wifo2.dummyplanner.PlannerLogicAbstractDummy"],
+	"PROPERTIES": [{
+		"KEY": "SHORT_NAME",
+		"VALUE": "PlannerLogicDummy_VarDecentralized"
+	}]
+}
