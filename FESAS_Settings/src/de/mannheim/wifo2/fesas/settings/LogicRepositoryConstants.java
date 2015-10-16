@@ -14,7 +14,7 @@ public class LogicRepositoryConstants {
 			"temp_java" + File.separator;
 	
 	/** Link to the folder containing the logic elements that should be loaded at start of the repository. */
-	public static final String REPOSITORY_START_ELEMENTS_FOLDER = "/Users/maximilian/Downloads/Entwicklung/Git/SOS_FESAS/logicElements/";
+	public static final String REPOSITORY_START_ELEMENTS_FOLDER = "C:" + File.separator + "logicElements" + File.separator;
 	
 	/** Logic elements that should be loaded at start of the repository. */
 	public static final String[] REPOSITORY_START_LOGIC_ELEMENTS = new String[]{
