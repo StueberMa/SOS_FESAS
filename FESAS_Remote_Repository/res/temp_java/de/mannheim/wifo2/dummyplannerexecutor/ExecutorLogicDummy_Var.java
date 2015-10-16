@@ -21,7 +21,6 @@ public class ExecutorLogicDummy_Var extends AbstractLogic  implements IExecutorL
 	
 	public ExecutorLogicDummy_Var(IAdaptationLogic adaptationLogic, IInformationType informationType) {
 		super(adaptationLogic,InformationCategory.EXECUTOR,informationType);
-		threshold = 5;
 		this.informationType = InformationType.Executing_SIMPLESAS;
 		
 		//TODO: create it based on meta data

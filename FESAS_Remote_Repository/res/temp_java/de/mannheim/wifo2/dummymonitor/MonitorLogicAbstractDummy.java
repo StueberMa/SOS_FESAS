@@ -16,7 +16,6 @@ public abstract class MonitorLogicAbstractDummy extends AbstractLogic implements
 	
 	public MonitorLogicAbstractDummy(IAdaptationLogic adaptationLogic, IInformationType informationType) {
 		super(adaptationLogic,InformationCategory.MONITOR,informationType);
-		threshold = 5;
 		
 		//TODO: create it based on meta data
 		supportedInformationTypes.add(InformationType.Sensor_SIMPLESAS);

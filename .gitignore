@@ -22,3 +22,5 @@ hs_err_pid*
 /Servers/
 /target/
 /WebContent/
+/temp_java/
+/temp_zip/

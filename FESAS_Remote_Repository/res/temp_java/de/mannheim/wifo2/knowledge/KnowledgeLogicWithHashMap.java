@@ -45,6 +45,11 @@ public class KnowledgeLogicWithHashMap extends AbstractLogic implements IKnowled
 	}
 
 	@Override
+	public String callLogic(Object data) {
+		return null;
+	}
+	
+	@Override
 	public synchronized String saveKnowledge(IKnowledgeRecord knowledge, String id) {
 		
 		if(Constants.DEBUG_KNOWLEDGE) System.out.println("Knowledge received for saving : " + knowledge.toString());
@@ -56,5 +61,7 @@ public class KnowledgeLogicWithHashMap extends AbstractLogic implements IKnowled
 	public void sendData(Object data) {
 //		adaptationLogic.sendData(data);	
 	}
+	
+	
 
 }

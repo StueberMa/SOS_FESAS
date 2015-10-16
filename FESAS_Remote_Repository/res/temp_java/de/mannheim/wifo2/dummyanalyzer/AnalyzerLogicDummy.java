@@ -11,11 +11,12 @@ import de.mannheim.wifo2.fesas.sasStructure.data.adaptationLogic.information.Inf
 public abstract class AnalyzerLogicDummy extends AbstractLogic implements IAnalyzerLogic {
 	
 	protected int expectedValues;
+	protected int threshold;
 	
 	public AnalyzerLogicDummy(IAdaptationLogic adaptationLogic, IInformationType informationType) {
 		super(adaptationLogic,InformationCategory.ANALYZER,informationType);
-		threshold = 5;
 		expectedValues = 2;
+		threshold = 5;
 		
 		//TODO: create it based on meta data
 		supportedInformationTypes.add(InformationType.Monitoring_SIMPLESAS);
@@ -24,7 +25,6 @@ public abstract class AnalyzerLogicDummy extends AbstractLogic implements IAnaly
 	public AnalyzerLogicDummy() {
 		// needed for Logic Loading mechanism
 		super();
-		threshold = 5;
 		
 		//TODO: create it based on meta data
 		supportedInformationTypes.add(InformationType.Monitoring_SIMPLESAS);

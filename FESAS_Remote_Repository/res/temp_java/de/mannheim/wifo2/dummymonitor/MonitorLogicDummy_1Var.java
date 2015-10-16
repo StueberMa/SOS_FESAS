@@ -21,7 +21,6 @@ public class MonitorLogicDummy_1Var extends MonitorLogicAbstractDummy implements
 	
 	public MonitorLogicDummy_1Var(IAdaptationLogic adaptationLogic, IInformationType informationType) {
 		super(adaptationLogic,informationType);
-		threshold = 5;
 		this.informationType = InformationType.Monitoring_SIMPLESAS;
 		
 		expectedMonitorValues = 1;

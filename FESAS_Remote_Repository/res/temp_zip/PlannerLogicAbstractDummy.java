@@ -12,6 +12,8 @@ import de.mannheim.wifo2.fesas.sasStructure.data.adaptationLogic.information.Inf
 
 public abstract class PlannerLogicAbstractDummy extends AbstractLogic implements IPlannerLogic {
 
+	protected int threshold;
+	
 	public PlannerLogicAbstractDummy(IAdaptationLogic adaptationLogic, IInformationType informationType) {
 		super(adaptationLogic,InformationCategory.PLANNER,informationType);
 		threshold = 5;
