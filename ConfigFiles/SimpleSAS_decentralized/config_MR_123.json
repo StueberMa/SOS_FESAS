@@ -1,0 +1,34 @@
+{
+	"MANAGEDRESOURCES": [
+
+		{
+		"MR_RESOURCE": {
+			"MR_TYPE": "CAMERA",
+			"MR_CLASS": "ENVSENSOR",
+			"MR_ID": "fesasID-123_2_003",
+			"MR_NAME": "Device_km1.5_camera",
+			"MR_PROPERTIES" : [
+				{
+					"TYPE":"port",
+					"VALUE":"9002"
+				}
+			]
+			} 
+		},
+		
+		{
+		"MR_RESOURCE": {
+			"MR_TYPE": "VMS",
+			"MR_CLASS": "ACTUATOR",
+			"MR_ID": "fesasID-123_2_501",
+			"MR_NAME": "Device_km0.5_VMS",
+			"MR_PROPERTIES" : [
+				{
+					"TYPE":"port",
+					"VALUE":"9005"
+				}
+			]
+			} 
+		}
+	]
+}

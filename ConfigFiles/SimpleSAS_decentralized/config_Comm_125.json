@@ -1,0 +1,31 @@
+{
+	"COMM_ADAPTATIONLOGIC": [
+		{
+			"COMM_ELEMENT": {
+				"COMM_TYPE": "PUBSUB",
+				"COMM_RECEIVER": "fesasID-125_1_002",
+				"COMM_SENDER": "fesasID-125_1_001",
+				"COMM_INFO_TYPE": "Monitoring_SIMPLESAS",
+				"COMM_INFO_CATEGORY": "MONITOR"
+			}
+		},
+		{
+			"COMM_ELEMENT": {
+				"COMM_TYPE": "PUBSUB",
+				"COMM_RECEIVER": "fesasID-125_1_003",
+				"COMM_SENDER": "fesasID-125_1_002",
+				"COMM_INFO_TYPE": "Analyzing_SIMPLESAS",
+				"COMM_INFO_CATEGORY": "ANALYZER"
+			}
+		},
+		{
+			"COMM_ELEMENT": {
+				"COMM_TYPE": "PUBSUB",
+				"COMM_RECEIVER": "fesasID-125_1_004",
+				"COMM_SENDER": "fesasID-125_1_003",
+				"COMM_INFO_TYPE": "Planning_SIMPLESAS",
+				"COMM_INFO_CATEGORY": "PLANNER"
+			}
+		}
+	]
+}

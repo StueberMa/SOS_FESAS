@@ -1,0 +1,14 @@
+{
+	"DEVICE_PROPERTIES": [
+		{
+			"TYPE": "device_id",
+			"VALUE": "fesasID-123_0_000"
+		},{
+			"TYPE": "device_name", 
+			"VALUE": "Device_km1.5"
+		},{
+			"TYPE": "device_ip_adress",
+			"VALUE": "123.123.123.123"
+		}
+	]
+}

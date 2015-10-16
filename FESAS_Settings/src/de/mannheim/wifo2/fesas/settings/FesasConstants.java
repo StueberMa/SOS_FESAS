@@ -14,8 +14,7 @@ public class FesasConstants {
 	/** The split symbol for the temporary config file's information. */
 	public static final String REGEX_FOR_CONFIG_FILE_SPLIT = ":";
 	/** Link to the config files directory. */
-	public static final String CONFIG_FILE_PATH = "C:" + File.separator + "ConfigFiles"
-			+ File.separator;
+	public static final String CONFIG_FILE_PATH = "/Users/maximilian/Downloads/Entwicklung/Git/SOS_FESAS/ConfigFiles/";
 
 	/** Link to the FESAS description language file. */
 	public static final String XML_FILE = "res" + File.separator + "example.xml";
@@ -30,9 +29,7 @@ public class FesasConstants {
 			File.separator + "logicRepository" + File.separator + "logicElements" + File.separator ; 
 
 //	TODO: write with File seperator
-	public static final String JDK_JAVA_HOME = "C:" + File.separator + "Program Files" 
-			+ File.separator + "Java" + File.separator 
-			+ "jdk1.8.0_31" + File.separator + "jre";
+	public static final String JDK_JAVA_HOME = "/Library/Java/JavaVirtualMachines/jdk1.8.0_25.jdk/Contents/Home/jre";
 	
 
 	
@@ -83,10 +80,9 @@ public class FesasConstants {
 	// Logging
 
 	/** Enable / Disable logging. */
-	public static final boolean USE_LOGGING_IN_FILE = false;
+	public static final boolean USE_LOGGING_IN_FILE = true;
 	/** Path to the log files. */
-	public static final String LOGGING_IN_FILE_PATH = "C:" + File.separator + "LogFiles" 
-			+ File.separator;
+	public static final String LOGGING_IN_FILE_PATH = "/Users/maximilian/Downloads/Entwicklung/Git/SOS_FESAS/LogFiles/";
 
 
 
