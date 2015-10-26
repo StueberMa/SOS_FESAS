@@ -1,0 +1,153 @@
+{
+	"AL_ADAPTATIONLOGIC": [
+		{
+		"AL_ELEMENT": {
+			"AL_TYPE": "MONITOR",
+			"AL_ID": "fesasID-123_1_001",
+			"AL_NAME": "Light_monitor",
+			"AL_LOGIC": [
+				{
+					"LOGIC_TYPE":"MONITOR",
+					"PROGRAMMING_LANGUAGE":"Java",
+					"CONTRACT_PROPERTIES": [
+						{
+							"VALUE":"MonitorLogicDummy_Light",
+							"UTILITY":0.75,
+							"KEY":"SHORT_NAME"
+						},
+					]
+				}
+			],
+			"AL_PROPERTIES" : [
+				{
+					"KEY":"port",
+					"VALUE":"12345"
+				}
+			]
+			} 
+		},
+		
+		{
+		"AL_ELEMENT": {
+			"AL_TYPE": "ANALYZER",
+			"AL_ID": "fesasID-123_1_002",
+			"AL_NAME": "Light_analyzer",
+			"AL_LOGIC": [
+				{
+					"LOGIC_TYPE":"ANALYZER",
+					"PROGRAMMING_LANGUAGE":"Java",
+					"CONTRACT_PROPERTIES": [
+						{
+							"VALUE":"AnalyzerLogicDummy_Light",
+							"UTILITY":0.75,
+							"KEY":"SHORT_NAME"
+						}
+					]
+				}
+			],
+			"AL_PROPERTIES": [
+				{
+					"KEY":"port",
+					"VALUE":"12345"
+				}
+			]
+			} 
+		},
+		
+		{	
+		"AL_ELEMENT": {
+			"AL_TYPE": "PLANNER",
+			"AL_ID": "fesasID-123_1_003",
+			"AL_NAME": "Light_planner",
+			"AL_LOGIC": [
+				{
+					"LOGIC_TYPE":"PLANNER",
+					"PROGRAMMING_LANGUAGE":"Java",
+					"CONTRACT_PROPERTIES": [
+						{
+							"VALUE":"PlannerLogicDummy_Light",
+							"UTILITY":0.75,
+							"KEY":"SHORT_NAME"
+						}
+					]
+				}
+			],
+			"AL_PROPERTIES" : [
+				{
+					"KEY":"port",
+					"VALUE":"12345"
+				}
+			]
+			} 
+		},
+		
+		{
+		"AL_ELEMENT": {
+			"AL_TYPE": "EXECUTOR",
+			"AL_ID": "fesasID-123_1_004",
+			"AL_NAME": "Light_Executor",
+			"AL_LOGIC": [
+				{
+					"LOGIC_TYPE":"EXECUTOR",
+					"PROGRAMMING_LANGUAGE":"Java",
+					"CONTRACT_PROPERTIES": [
+						{
+							"VALUE":"ExecutorLogicDummy_Light",
+							"UTILITY":0.75,
+							"KEY":"SHORT_NAME"
+						}
+					]
+				}
+			],
+			"AL_PROPERTIES" : [
+				{
+					"KEY":"port",
+					"VALUE":"12345"
+				}
+			]
+			}
+		},
+		
+		{		
+		"AL_ELEMENT": {
+			"AL_TYPE": "KNOWLEDGE",
+			"AL_ID": "fesasID-123_1_006",
+			"AL_NAME": "Light_Knowledge",
+			"AL_LOGIC" : [
+				{
+					"LOGIC_TYPE":"KNOWLEDGE",
+					"PROGRAMMING_LANGUAGE":"Java",
+					"CONTRACT_PROPERTIES": [
+						{
+							"VALUE":"KnowledgeLogicWithHashMap",
+							"UTILITY":0.75,
+							"KEY":"SHORT_NAME"
+						}
+					]
+				}
+			],
+			"AL_PROPERTIES" : [
+				{
+					"KEY":"port",
+					"VALUE":"12345"
+				}
+			]
+			}
+		},
+		
+		{
+		"AL_ELEMENT": {
+			"AL_TYPE": "PUBSUB",
+			"AL_ID": "null",
+			"AL_NAME": "null",
+			"AL_LOGIC" : [],
+			"AL_PROPERTIES" : [
+				{
+					"KEY":"port",
+					"VALUE":"12345"
+				}
+			]
+			}
+		}
+	]
+}

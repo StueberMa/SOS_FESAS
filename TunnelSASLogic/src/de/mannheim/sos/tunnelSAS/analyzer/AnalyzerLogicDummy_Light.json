@@ -1,0 +1,16 @@
+{
+    "ID": "1234567890",
+    "NAME": "de.mannheim.sos.tunnelSAS.analyzer.AnalyzerLogicDummy_Light",
+    "DESCRIPTION": "Tunnel logic for analyzing the current light intensity.",
+    "LOGIC_TYPE": "ANALYZER",
+   	"PROGRAMMING_LANGUAGE": "Java",
+   	"DEPENDENCIES": [
+   		"de.mannheim.sos.tunnelSAS.analyzer.AnalyzerLogicAbstractDummy"
+   	],
+	"PROPERTIES": [
+        {
+            "KEY": "SHORT_NAME",
+            "VALUE": "AnalyzerLogicDummy_Light"
+        }
+	]
+}

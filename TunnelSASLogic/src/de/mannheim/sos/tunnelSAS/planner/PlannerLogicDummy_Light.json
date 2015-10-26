@@ -1,0 +1,16 @@
+{
+	"ID": "1234567890",
+	"NAME": "de.mannheim.sos.tunnelSAS.planner.PlannerLogicDummy_Light",
+	"DESCRIPTION": "Logic for planning the light usage in a tunnel",
+	"LOGIC_TYPE": "PLANNER",
+	"PROGRAMMING_LANGUAGE": "Java",
+	"DEPENDENCIES": [
+		"de.mannheim.sos.tunnelSAS.planner.PlanData",
+		"de.mannheim.sos.tunnelSAS.planner.PlanData2",
+		"de.mannheim.sos.tunnelSAS.planner.PlannerLogicAbstractDummy"
+	],
+	"PROPERTIES": [{
+		"KEY": "SHORT_NAME",
+		"VALUE": "PlannerLogicDummy_Light"
+	}]
+}

@@ -1,0 +1,14 @@
+{
+    "ID": "1234567890",
+    "NAME": "de.mannheim.sos.tunnelSAS.executor.ExecutorLogicDummy_Light",
+    "DESCRIPTION": "Executor logic for light adaption.",
+    "LOGIC_TYPE": "EXECUTOR",
+	"PROGRAMMING_LANGUAGE": "Java",
+	"DEPENDENCIES": [],
+	"PROPERTIES": [
+        {
+            "KEY": "SHORT_NAME",
+            "VALUE": "ExecutorLogicDummy_Light"
+        }
+	]
+}

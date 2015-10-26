@@ -1,0 +1,19 @@
+{
+	"ID": "1234567890",
+    	"NAME": "de.mannheim.sos.tunnelSAS.monitor.MonitorLogicDummy_Light",
+    	"DESCRIPTION": "Tunnel logic monitor",
+    	"LOGIC_TYPE": "MONITOR",
+    	"PROGRAMMING_LANGUAGE": "Java",
+   	"DEPENDENCIES": [
+   		"de.mannheim.sos.tunnelSAS.monitor.MonitorLogicAbstractDummy"
+   	],
+	"PROPERTIES": [
+        {
+            "KEY": "SHORT_NAME",
+            "VALUE": "MonitorLogicDummy_Light"
+        },{
+            "KEY": "TEST",
+            "VALUE": "Monitoring_1"
+        }
+	]
+}
