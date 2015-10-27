@@ -38,6 +38,15 @@ public class PlannerLogicDummy_Light extends PlannerLogicAbstractDummy implement
 
 	@Override
 	public String callLogic(Object data) {
+		// Loop über alle Lampen. 
+		// bis zur Mitte des Arrays:
+		// lampBrightness = (envBrightness (oder Vorgänger mit neuer Brightness)) / 1.25
+		// nach der Mitte des Arrays:
+		// lampBrightness = (envBrightness (oder Vorgänger mit neuer Brightness)) * 1.25
+		
+		// Alle Lampen mit aktualisierter lampBrightness  
+
+		
 		if (data instanceof String) {
 			//Format of input from analyzer: FALSE_AV_INPUT
 			

@@ -34,6 +34,8 @@ public class AnalyzerLogicDummy_Light extends AnalyzerLogicAbstractDummy impleme
 
 	@Override
 	public String callLogic(Object data) {
+		// Ermittle die Mitte des Arrays
+		
 		System.out.println("Data type in Analyzer Logic: " + data.getClass());
 		if (data instanceof String) {
 			String result = "";

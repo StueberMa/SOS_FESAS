@@ -40,6 +40,15 @@ public class MonitorLogicDummy_Light extends MonitorLogicAbstractDummy implement
 
 	@Override
 	public String callLogic(Object data) {
+		// Separaten Service für Ermittlung von Sensordaten ansprechen und Werte zurückgeben
+		// -> REST-Web Service (GET). IP-Addresse ist fest hinterlegt.
+		
+		// Attribute des Service
+		// - Environment
+		// Attr. envBrightness
+		// - Array von Lampen 
+		// Attr. lampBrightness
+		
 		
 		String monitoringResult = produceMonitorData(expectedMonitorValues);
 		this.sendData(monitoringResult);

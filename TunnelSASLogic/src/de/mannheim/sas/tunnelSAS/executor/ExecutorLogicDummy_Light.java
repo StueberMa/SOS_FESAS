@@ -42,6 +42,15 @@ public class ExecutorLogicDummy_Light extends AbstractLogic  implements IExecuto
 
 	@Override
 	public String callLogic(Object data) {
+		// Senden von Lichteinstellungswerten
+		// -> REST-Web Service (PUT). IP-Addresse ist fest hinterlegt.
+		
+		// Attribute des Service
+		// - Array von Lampen
+		// jede Lampe hat Attribute:
+		// - lampBrightness
+		
+		
 		if (data instanceof String) {
 			//Format of input from analyzer: FALSE_AV_INPUT
 			String input = (String) data;
