@@ -3,7 +3,7 @@ angular.module("TunnelApp", []).controller("TunnelController", function($scope, 
 	$scope.fetchObject = function() {
 		$http({
 			method : 'GET',
-			url : './services/hello/sayObjectHello'
+			url : './services/tunnel/controller'
 		}).success(function(data, status, headers, config) {
 			 console.log('Fetched data!');
 			$scope.results = data;
