@@ -54,7 +54,7 @@ public class MonitorLogicDummy_Light extends MonitorLogicAbstractDummy implement
 	public static void main(String args[]) {
 		try {
 			HttpClient httpClient = HttpClientBuilder.create().build();
-			HttpGet getRequest = new HttpGet("http://localhost:8080/TunnelController/services/tunnel/controller");
+			HttpGet getRequest = new HttpGet("http://localhost:8080/TunnelController/services/tunnel/status");
 			getRequest.addHeader("accept", "application/json");
 
 			HttpResponse response = httpClient.execute(getRequest);
