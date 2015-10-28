@@ -7,7 +7,10 @@
 	"DEPENDENCIES": [
 		"de.mannheim.sos.tunnelSAS.planner.PlanData",
 		"de.mannheim.sos.tunnelSAS.planner.PlanData2",
-		"de.mannheim.sos.tunnelSAS.planner.PlannerLogicAbstractDummy"
+		"de.mannheim.sos.tunnelSAS.planner.PlannerLogicAbstractDummy",
+   		"de.mannheim.sos.tunnelSAS.model.Environment",
+   		"de.mannheim.sos.tunnelSAS.model.Lamp",
+   		"de.mannheim.sos.tunnelSAS.model.Tunnel"
 	],
 	"PROPERTIES": [{
 		"KEY": "SHORT_NAME",
