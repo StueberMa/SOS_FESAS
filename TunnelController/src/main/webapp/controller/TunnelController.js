@@ -3,12 +3,12 @@ angular.module("TunnelApp", []).controller("TunnelController", function($scope, 
 	$scope.fetchObject = function() {
 		$http({
 			method : 'GET',
-			url : './services/tunnel/controller?simulate=true'
+			url : './services/tunnel/status?simulate=true'
 		}).success(function(data, status, headers, config) {
-			 console.log('Fetched data!');
+			console.log('Fetched data!');
 			$scope.results = data;
 		}).error(function(data, status, headers, config) {
-			alert("Communication failed!");
+			console.log("Communication failed!");
 		});
 	};
 	
@@ -22,6 +22,17 @@ angular.module("TunnelApp", []).controller("TunnelController", function($scope, 
 	$scope.inintFunction = function(){
 		  $scope.fetchObject();
 		  $scope.intervalFunction();
+	};
+	
+	$scope.update = function(brightness) {
+		$http({
+			method : 'PUT',
+			url : './services/tunnel/control?brightness=' + brightness
+		}).success(function(data, status, headers, config) {
+			console.log('Put data!');
+		}).error(function(data, status, headers, config) {
+			console.log("Communication failed!");
+		});
 	};
 	
 });

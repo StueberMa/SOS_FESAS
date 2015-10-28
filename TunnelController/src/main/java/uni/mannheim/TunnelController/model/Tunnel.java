@@ -102,6 +102,16 @@ public class Tunnel{
 	public List<Lamp> getLamps() {
 		return lamps;
 	}
+	
+	/**
+	 * SET brightness
+	 * 
+	 * @param index
+	 * @param brightness
+	 */
+	public void setLampBrightness(int index, int brightness) {
+		lamps.get(index).setBrightness(brightness);
+	}
 
 	/**
 	 * ADD lamps

@@ -2,12 +2,21 @@ h1 {
 	margin-bottom: 30px;
 }
 
+h3 {
+	margin-top: 75px;
+	margin-bottom: 10px;
+}
+
 img {
 	width: 80px;
 }
 
 td {
 	text-align: center;
+}
+
+.noHeading {
+	font-weight: normal;
 }
 
 .entrance {
