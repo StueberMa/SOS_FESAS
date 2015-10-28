@@ -6,12 +6,27 @@ img {
 	width: 80px;
 }
 
+td {
+	text-align: center;
+}
+
+.entrance {
+	padding-right: 25px;
+}
+
+.exit {
+	padding-left: 25px;
+}
+
+.subtitle {
+	font-style: italic;
+	margin:5px 0px 0px 0px;
+	width: 100%;
+}
+
 .tunnel {
-	margin-right: 30px;
-	margin-left: 30px;
 	background-color: #DDDDDD;
-	border-top: 2px solid #000000;
-	border-bottom: 2px solid #000000;
-	display: inline-block;
+	border-top: 3px solid #000000;
+	border-bottom: 3px solid #000000;
 	padding:10px;
 }

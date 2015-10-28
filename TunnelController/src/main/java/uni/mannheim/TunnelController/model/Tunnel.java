@@ -15,6 +15,7 @@ public class Tunnel{
 	private static Tunnel tunnel;
 	private Environment environment;
 	private List<Lamp> lamps;
+	private boolean dim;
 	
 	/**
 	 * Constructor
@@ -24,6 +25,7 @@ public class Tunnel{
 	private Tunnel(int brightness) {
 		this.environment = new Environment(brightness);
 		this.lamps = new ArrayList<Lamp>();
+		this.dim = false;
 	}
 	
 	/**
@@ -47,6 +49,31 @@ public class Tunnel{
 		}
 		
 		return tunnel;
+	}
+	
+	/**
+	 * Method simulateEnvironment
+	 */
+	public void simulateEnvironment() {
+		
+		// declaration
+		int brightness = 0;
+		
+		brightness = environment.getBrightness();
+		
+		// determine dim
+		if(brightness >= 100)
+			dim = true;
+		else if (brightness <= 0)
+			dim = false;
+		
+		// compute brightness
+		if(dim)
+			brightness = brightness - 10;
+		else
+			brightness = brightness + 10;
+		
+		environment.setBrightness(brightness);
 	}
 
 	/**

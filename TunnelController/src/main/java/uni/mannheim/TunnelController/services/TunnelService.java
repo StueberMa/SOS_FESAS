@@ -3,6 +3,7 @@ package uni.mannheim.TunnelController.services;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
 import uni.mannheim.TunnelController.model.Tunnel;
@@ -24,11 +25,19 @@ public class TunnelService {
 	@GET
 	@Path("/controller")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Tunnel retrieveTunnel() {
+	public Tunnel retrieveTunnel(@QueryParam("simulate") boolean simulate) {
 		
-		Tunnel t1 = null;
-		t1 = Tunnel.getTunnel();
+		// declaration
+		Tunnel t = null;
+		
+		// get tunnel
+		t = Tunnel.getTunnel();
+		
+		// simulate env.
+		if(simulate) {
+			t.simulateEnvironment();
+		}
 
-		return t1;
+		return t;
 	}
 }

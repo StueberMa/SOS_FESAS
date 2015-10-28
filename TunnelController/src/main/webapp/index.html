@@ -3,22 +3,32 @@
 <head>
 <meta charset="utf-8">
 <title>Tunnel Controller</title>
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.28/angular.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.28/angular.min.js"></script>
 <script src="./controller/TunnelController.js"></script>
 <link rel="stylesheet" type="text/css" href="./assets/style/basics.css">
 </head>
-<body ng-app="TunnelApp">
+<body ng-app="TunnelApp" ng-controller="TunnelController"
+	ng-init="inintFunction()">
+	
 	<h1>Tunnel Controller</h1>
-	<div ng-controller="TunnelController" ng-init="inintFunction()">
-		<img src="./assets/img/brightness.svg" style="background-color: rgba(255, 255, 0, 0.5);">
-		<div class="tunnel">
-			<img src="./assets/img/light.svg" style="background-color: rgba(255, 255, 0, 0.5);">
-			<img src="./assets/img/light.svg" style="background-color: rgba(255, 255, 0, 0.25);">
-			<img src="./assets/img/light.svg" style="background-color: rgba(255, 255, 0, 0.1);">
-			<img src="./assets/img/light.svg" style="background-color: rgba(255, 255, 0, 0.25);">
-			<img src="./assets/img/light.svg" style="background-color: rgba(255, 255, 0, 0.5);">
-		</div>
-		<img src="./assets/img/brightness.svg" style="background-color: rgba(255, 255, 0, 0.5);">
-	</div>
+	
+	<table>
+		<tr>
+			<td class="entrance">
+				<img src="./assets/img/brightness.svg" style="background-color: rgba(255, 255, 0, {{results.environment.brightness/ 100}}">
+				<p class="subtitle">Bright.: {{results.environment.brightness / 100}}</p>
+			</td>
+			<td class="tunnel" ng-repeat="lamp in results.lamps">
+				<img src="./assets/img/light.svg" style="background-color: rgba(255, 255, 0, {{lamp.brightness/ 100}});">
+				<p class="subtitle">Bright.: {{lamp.brightness / 100}}</p>
+			</td>
+			<td class="exit">
+				<img src="./assets/img/brightness.svg" style="background-color: rgba(255, 255, 0, {{ results.environment.brightness/ 100}}">
+				<p class="subtitle">Bright.: {{results.environment.brightness / 100}}</p>
+			</td>
+		</tr>
+	</table>
+	
 </body>
 </html>
