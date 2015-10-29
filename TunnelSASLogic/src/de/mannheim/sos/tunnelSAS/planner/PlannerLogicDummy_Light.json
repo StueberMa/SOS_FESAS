@@ -5,12 +5,11 @@
 	"LOGIC_TYPE": "PLANNER",
 	"PROGRAMMING_LANGUAGE": "Java",
 	"DEPENDENCIES": [
-		"de.mannheim.sos.tunnelSAS.planner.PlanData",
-		"de.mannheim.sos.tunnelSAS.planner.PlanData2",
 		"de.mannheim.sos.tunnelSAS.planner.PlannerLogicAbstractDummy",
    		"de.mannheim.sos.tunnelSAS.model.Environment",
    		"de.mannheim.sos.tunnelSAS.model.Lamp",
-   		"de.mannheim.sos.tunnelSAS.model.Tunnel"
+   		"de.mannheim.sos.tunnelSAS.model.Tunnel",
+   		"de.mannheim.sos.tunnelSAS.model.BrightnessDTO"
 	],
 	"PROPERTIES": [{
 		"KEY": "SHORT_NAME",

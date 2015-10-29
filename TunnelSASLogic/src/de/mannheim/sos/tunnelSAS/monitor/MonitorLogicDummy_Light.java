@@ -51,7 +51,44 @@ public class MonitorLogicDummy_Light extends MonitorLogicAbstractDummy implement
 		return id;
 	}
 	
-	public static void main(String args[]) {
+//	public static void main(String args[]) {
+//		try {
+//			HttpClient httpClient = HttpClientBuilder.create().build();
+//			HttpGet getRequest = new HttpGet("http://localhost:8080/TunnelController/services/tunnel/status");
+//			getRequest.addHeader("accept", "application/json");
+//
+//			HttpResponse response = httpClient.execute(getRequest);
+//
+//			if (response.getStatusLine().getStatusCode() != 200) {
+//				throw new RuntimeException("Failed : HTTP error code : "
+//				   + response.getStatusLine().getStatusCode());
+//			}
+//
+//			BufferedReader br = new BufferedReader(new InputStreamReader((response.getEntity().getContent())));
+//
+//			
+//			System.out.println("Output from Server .... \n");
+//
+//            
+//            String output;
+//            String finOutput = "";
+//			while ((output = br.readLine()) != null) {
+//				finOutput = finOutput + output;
+//			}
+//			System.out.println(finOutput);
+//			Gson gson = new com.google.gson.Gson();
+//			
+//            Tunnel tunnelResponse = gson.fromJson(finOutput, Tunnel.class);
+//			System.out.println(tunnelResponse.getLamps().get(1).getBrightness());
+//		  } catch (ClientProtocolException e) {
+//			e.printStackTrace();
+//		  } catch (IOException e) {
+//			e.printStackTrace();
+//		  }
+//			
+//	}
+	@Override
+	public String callLogic(Object data) {
 		try {
 			HttpClient httpClient = HttpClientBuilder.create().build();
 			HttpGet getRequest = new HttpGet("http://localhost:8080/TunnelController/services/tunnel/status");
@@ -68,7 +105,6 @@ public class MonitorLogicDummy_Light extends MonitorLogicAbstractDummy implement
 
 			
 			System.out.println("Output from Server .... \n");
-
             
             String output;
             String finOutput = "";
@@ -76,48 +112,11 @@ public class MonitorLogicDummy_Light extends MonitorLogicAbstractDummy implement
 				finOutput = finOutput + output;
 			}
 			System.out.println(finOutput);
-			Gson gson = new com.google.gson.Gson();
+			Gson gson = new Gson();
 			
             Tunnel tunnelResponse = gson.fromJson(finOutput, Tunnel.class);
-			System.out.println(tunnelResponse.getLamps().get(1).getBrightness());
-		  } catch (ClientProtocolException e) {
-			e.printStackTrace();
-		  } catch (IOException e) {
-			e.printStackTrace();
-		  }
-			
-	}
-	@Override
-	public String callLogic(Object data) {
-		try {
-			HttpClient httpClient = HttpClientBuilder.create().build();
-			HttpGet getRequest = new HttpGet("http://localhost:8080/TunnelController/services/tunnel/controller");
-			getRequest.addHeader("accept", "application/json");
-
-			HttpResponse response = httpClient.execute(getRequest);
-
-			if (response.getStatusLine().getStatusCode() != 200) {
-				throw new RuntimeException("Failed : HTTP error code : "
-				   + response.getStatusLine().getStatusCode());
-			}
-
-			BufferedReader br = new BufferedReader(new InputStreamReader((response.getEntity().getContent())));
-
-			
-			System.out.println("Output from Server .... \n");
-
-            
-            String output;
-            String finOutput = "";
-			while ((output = br.readLine()) != null) {
-				finOutput = finOutput + output;
-			}
-			System.out.println(finOutput);
-			Gson gson = new com.google.gson.Gson();
-			
-            Tunnel tunnelResponse = gson.fromJson(finOutput, Tunnel.class);
-			System.out.println(tunnelResponse.getLamps().get(1).getBrightness());
-			return Integer.toString(tunnelResponse.getLamps().get(1).getBrightness());
+			this.sendData(gson.toJson(tunnelResponse));
+			return gson.toJson(tunnelResponse);
 		  } catch (ClientProtocolException e) {
 			e.printStackTrace();
 		  } catch (IOException e) {

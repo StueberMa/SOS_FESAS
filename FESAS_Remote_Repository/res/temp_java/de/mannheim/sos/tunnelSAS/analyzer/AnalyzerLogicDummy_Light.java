@@ -3,6 +3,11 @@ package de.mannheim.wifo2.fesas.logicRepository.logicElements.analyzer.de.mannhe
 
 import de.mannheim.wifo2.fesas.logicRepository.dependencies.de.mannheim.sos.tunnelSAS.analyzer.AnalyzerLogicAbstractDummy;
 import de.mannheim.wifo2.fesas.logicRepository.dependencies.de.mannheim.sos.tunnelSAS.model.Environment;
+import java.util.ArrayList;
+
+import com.google.gson.Gson;
+
+import de.mannheim.wifo2.fesas.logicRepository.dependencies.de.mannheim.sos.tunnelSAS.model.BrightnessDTO;
 import de.mannheim.wifo2.fesas.logicRepository.dependencies.de.mannheim.sos.tunnelSAS.model.Lamp;
 import de.mannheim.wifo2.fesas.logicRepository.dependencies.de.mannheim.sos.tunnelSAS.model.Tunnel;
 import de.mannheim.wifo2.fesas.logicRepositoryStructure.data.metadata.logic.LogicType;
@@ -39,25 +44,34 @@ public class AnalyzerLogicDummy_Light extends AnalyzerLogicAbstractDummy impleme
 
 	@Override
 	public String callLogic(Object data) {
-		System.out.println("Data type in Analyzer Logic: " + data.getClass());
+		// Ermittle die Mitte des Arrays
+		
 		if (data instanceof String) {
-			String result = "";
-			String input = (String) data;
-			System.out.println("Analyzer Logic called with: " + data);
-			// above minimum value - TRUE or FALSE? FALSE = Adaptation plan necessary
-			int average = Integer.parseInt(input);
-			if (average < threshold) {
-				result += "FALSE_";
-			} else {
-				result += "TRUE";
-				System.out.println("Analyzer Logic returns: " + result);
-				return result;
+			//Format of input from analyzer: FALSE_AV_INPUT
+			
+			Gson gson = new Gson();
+			
+            Tunnel tunnelResponse = gson.fromJson((String) data, Tunnel.class);
+			this.sendData(gson.toJson(tunnelResponse));
+			
+			ArrayList<Integer> lightBrightnessList = new ArrayList<Integer>();
+			int totalBrightness = 0; 
+			
+			for (Lamp lamp : tunnelResponse.getLamps()) {
+				lightBrightnessList.add(lamp.getBrightness());
+				totalBrightness = totalBrightness + lamp.getBrightness();
 			}
-			result += average + "_";
-			result += input;
-			System.out.println("Analyzer Logic returns: " + result);
-			this.sendData(result);
-			return result;
+			
+			System.out.println("Analyzer - Average Brightness: " + totalBrightness / tunnelResponse.getLamps().size());
+			
+			BrightnessDTO brightnessDTO = new BrightnessDTO();
+			
+			brightnessDTO.setEnvBrightness(tunnelResponse.getEnvironment().getBrightness());
+			brightnessDTO.setLampBrightness(lightBrightnessList);
+			
+			this.sendData(gson.toJson(brightnessDTO));
+			
+			return gson.toJson(brightnessDTO);
 		}
 		return null;
 	}

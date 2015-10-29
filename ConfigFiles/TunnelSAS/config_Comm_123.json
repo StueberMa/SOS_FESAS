@@ -5,7 +5,7 @@
 				"COMM_TYPE": "PUBSUB",
 				"COMM_RECEIVER": "fesasID-123_1_002",
 				"COMM_SENDER": "fesasID-123_1_001",
-				"COMM_INFO_TYPE": "Monitoring_TunnelSAS",
+				"COMM_INFO_TYPE": "Monitoring_SIMPLESAS",
 				"COMM_INFO_CATEGORY": "MONITOR"
 			}
 		},
@@ -14,7 +14,7 @@
 				"COMM_TYPE": "PUBSUB",
 				"COMM_RECEIVER": "fesasID-123_1_003",
 				"COMM_SENDER": "fesasID-123_1_002",
-				"COMM_INFO_TYPE": "Analyzing_TunnelSAS",
+				"COMM_INFO_TYPE": "Analyzing_SIMPLESAS",
 				"COMM_INFO_CATEGORY": "ANALYZER"
 			}
 		},
@@ -23,7 +23,7 @@
 				"COMM_TYPE": "PUBSUB",
 				"COMM_RECEIVER": "fesasID-123_1_004",
 				"COMM_SENDER": "fesasID-123_1_003",
-				"COMM_INFO_TYPE": "Planning_TunnelSAS",
+				"COMM_INFO_TYPE": "Planning_SIMPLESAS",
 				"COMM_INFO_CATEGORY": "PLANNER"
 			}
 		}

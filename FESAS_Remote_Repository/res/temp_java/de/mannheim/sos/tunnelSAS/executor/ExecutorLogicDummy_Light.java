@@ -4,8 +4,20 @@ package de.mannheim.wifo2.fesas.logicRepository.logicElements.executor.de.mannhe
 import de.mannheim.wifo2.fesas.logicRepository.dependencies.de.mannheim.sos.tunnelSAS.model.Environment;
 import de.mannheim.wifo2.fesas.logicRepository.dependencies.de.mannheim.sos.tunnelSAS.model.Lamp;
 import de.mannheim.wifo2.fesas.logicRepository.dependencies.de.mannheim.sos.tunnelSAS.model.Tunnel;
-import java.util.ArrayList;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URISyntaxException;
 
+import org.apache.http.HttpResponse;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpPut;
+import org.apache.http.client.utils.URIBuilder;
+import org.apache.http.impl.client.HttpClientBuilder;
+
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+
+import de.mannheim.wifo2.fesas.logicRepository.dependencies.de.mannheim.sos.tunnelSAS.model.BrightnessDTO;
 import de.mannheim.wifo2.fesas.logicRepository.logicElements.AbstractLogic;
 import de.mannheim.wifo2.fesas.logicRepositoryStructure.data.metadata.logic.LogicType;
 import de.mannheim.wifo2.fesas.logicRepositoryStructure.data.metadata.logic.logicInterfaces.IExecutorLogic;
@@ -14,7 +26,8 @@ import de.mannheim.wifo2.fesas.sasStructure.data.adaptationLogic.information.IIn
 import de.mannheim.wifo2.fesas.sasStructure.data.adaptationLogic.information.InformationCategory;
 import de.mannheim.wifo2.fesas.sasStructure.data.adaptationLogic.information.InformationType;
 
-public class ExecutorLogicDummy_Light extends AbstractLogic  implements IExecutorLogic {
+public class ExecutorLogicDummy_Light extends AbstractLogic implements
+		IExecutorLogic {
 
 	public ExecutorLogicDummy_Light() {
 		// needed for Logic Loading mechanism
@@ -22,18 +35,19 @@ public class ExecutorLogicDummy_Light extends AbstractLogic  implements IExecuto
 		this.informationType = InformationType.Executing_SIMPLESAS;
 		supportedInformationTypes.add(InformationType.Planning_SIMPLESAS);
 	}
-	
-	public ExecutorLogicDummy_Light(IAdaptationLogic adaptationLogic, IInformationType informationType) {
-		super(adaptationLogic,InformationCategory.EXECUTOR,informationType);
+
+	public ExecutorLogicDummy_Light(IAdaptationLogic adaptationLogic,
+			IInformationType informationType) {
+		super(adaptationLogic, InformationCategory.EXECUTOR, informationType);
 		this.informationType = InformationType.Executing_SIMPLESAS;
-		
-		//TODO: create it based on meta data
+
+		// TODO: create it based on meta data
 		supportedInformationTypes.add(InformationType.Planning_SIMPLESAS);
 	}
 
 	private static final LogicType type = LogicType.EXECUTOR;
 	private static final String id = "ExecutorLogicDummy_Light";
-	
+
 	@Override
 	public LogicType getLogicType() {
 		return type;
@@ -46,40 +60,63 @@ public class ExecutorLogicDummy_Light extends AbstractLogic  implements IExecuto
 
 	@Override
 	public String callLogic(Object data) {
+		// Senden von Lichteinstellungswerten
+		// -> REST-Web Service (PUT). IP-Addresse ist fest hinterlegt.
+
+		// Attribute des Service
+		// - Array von Lampen
+		// jede Lampe hat Attribute:
+		// - lampBrightness
+
 		if (data instanceof String) {
-			//Format of input from analyzer: FALSE_AV_INPUT
-			String input = (String) data;
+			try {
+				Gson gson = new Gson();
+
+				BrightnessDTO brightnessValues = gson.fromJson((String) data,
+						BrightnessDTO.class);
+
+				JsonArray jsonArray = new JsonArray();
+
+				for (int value : brightnessValues.getLampBrightness()) {
+					jsonArray.add(value);
+				}
+				
+				System.out.println("Executor - Sending Values: " + gson.toJson(jsonArray));
+				
+				HttpClient httpClient = HttpClientBuilder.create().build();
+				URIBuilder builder = new URIBuilder(
+						"http://localhost:8080/TunnelController/services/tunnel/control")
+						.addParameter("brightness", gson.toJson(jsonArray));
+
+				HttpPut putRequest = new HttpPut(builder.build());
+
+				putRequest.addHeader("accept", "application/json");
+
+				HttpResponse response = httpClient.execute(putRequest);
+
+				if (response.getStatusLine().getStatusCode() != 204) {
+					throw new RuntimeException("Failed : HTTP error code : "
+							+ response.getStatusLine().getStatusCode());
+				}
+
+				httpClient.getConnectionManager().shutdown();
 			
-			//TODO: check, whether the plan is for the current system
-			
-			ArrayList<String> instructions = extractPlan(input);
-			
-			for (String i : instructions) {
-				System.out.println("Instruction: " + i); 
+				return "It ends here.";
+
+			} catch (MalformedURLException e) {
+
+				e.printStackTrace();
+
+			} catch (IOException e) {
+
+				e.printStackTrace();
+
+			} catch (URISyntaxException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
-			
-			return "No of performed instruction: " + instructions.size();
 		}
 		return null;
 	}
-	
-	private ArrayList<String> extractPlan(String plan) {
-		ArrayList<String> values = new ArrayList<String>();
-		
-		int firstUnderscore;
-		int secondUnderscore = -1;
-		
-		while (secondUnderscore < plan.length()) {
-			firstUnderscore = secondUnderscore + 1;
-			secondUnderscore = plan.indexOf("_", firstUnderscore);
-			if (secondUnderscore == -1) {
-				secondUnderscore = plan.length();
-			}
-			
-			values.add(plan.substring(firstUnderscore,secondUnderscore));
-		}
-		
-		return values;
-	}
-	
+
 }

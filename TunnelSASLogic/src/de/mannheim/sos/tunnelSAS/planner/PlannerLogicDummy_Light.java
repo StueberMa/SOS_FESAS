@@ -1,14 +1,18 @@
-package  de.mannheim.sos.tunnelSAS.planner;
+package de.mannheim.sos.tunnelSAS.planner;
 
 import java.util.ArrayList;
 
+import com.google.gson.Gson;
+
+import de.mannheim.sos.tunnelSAS.model.BrightnessDTO;
 import de.mannheim.wifo2.fesas.logicRepositoryStructure.data.metadata.logic.LogicType;
 import de.mannheim.wifo2.fesas.logicRepositoryStructure.data.metadata.logic.logicInterfaces.IPlannerLogic;
 import de.mannheim.wifo2.fesas.sasStructure.adaptationLogic.IAdaptationLogic;
 import de.mannheim.wifo2.fesas.sasStructure.data.adaptationLogic.information.IInformationType;
 import de.mannheim.wifo2.fesas.sasStructure.data.adaptationLogic.information.InformationType;
 
-public class PlannerLogicDummy_Light extends PlannerLogicAbstractDummy implements IPlannerLogic {
+public class PlannerLogicDummy_Light extends PlannerLogicAbstractDummy
+		implements IPlannerLogic {
 
 	public PlannerLogicDummy_Light() {
 		// needed for Logic Loading mechanism
@@ -16,16 +20,17 @@ public class PlannerLogicDummy_Light extends PlannerLogicAbstractDummy implement
 		threshold = 5;
 		this.informationType = InformationType.Planning_SIMPLESAS;
 	}
-	
-	public PlannerLogicDummy_Light(IAdaptationLogic adaptationLogic, IInformationType informationType) {
-		super(adaptationLogic,informationType);
+
+	public PlannerLogicDummy_Light(IAdaptationLogic adaptationLogic,
+			IInformationType informationType) {
+		super(adaptationLogic, informationType);
 		threshold = 5;
 		this.informationType = InformationType.Planning_SIMPLESAS;
 	}
 
 	private static final LogicType type = LogicType.PLANNER;
 	private static final String id = "PlannerLogicDummy_Light";
-	
+
 	@Override
 	public LogicType getLogicType() {
 		return type;
@@ -38,42 +43,54 @@ public class PlannerLogicDummy_Light extends PlannerLogicAbstractDummy implement
 
 	@Override
 	public String callLogic(Object data) {
-		// Loop über alle Lampen. 
+		// Loop über alle Lampen.
 		// bis zur Mitte des Arrays:
-		// lampBrightness = (envBrightness (oder Vorgänger mit neuer Brightness)) / 1.25
+		// lampBrightness = (envBrightness (oder Vorgänger mit neuer
+		// Brightness)) / 1.25
 		// nach der Mitte des Arrays:
-		// lampBrightness = (envBrightness (oder Vorgänger mit neuer Brightness)) * 1.25
-		
-		// Alle Lampen mit aktualisierter lampBrightness  
+		// lampBrightness = (envBrightness (oder Vorgänger mit neuer
+		// Brightness)) * 1.25
 
-		
+		// Alle Lampen mit aktualisierter lampBrightness
+
 		if (data instanceof String) {
-			//Format of input from analyzer: FALSE_AV_INPUT
-			
-			System.out.println(new PlanData().toString());
-			System.out.println(new PlanData2().toString());
-			
-			String input = (String) data;
-			ArrayList<Integer> values = extractMonitorValues(input);
-			
-			ArrayList<String> plan = new ArrayList<String>();
-			
-			for (Integer i : values) {
-				if (isAboveTreshold(i)) plan.add("Increase variable " + i);  
+			Gson gson = new Gson();
+			System.out.println((String) data);
+			BrightnessDTO brightnessValues = gson.fromJson((String) data,
+					BrightnessDTO.class);
+			ArrayList<Integer> changedBrightnessValues = new ArrayList<Integer>();
+
+			if (brightnessValues.getLampBrightness() != null) {
+				int totalBrightness = 0;
+				int newBrightness = 0;
+
+				int previousBrightness = brightnessValues.getEnvBrightness();
+
+				int midpoint = brightnessValues.getLampBrightness().size() / 2;
+
+				for (int i = 0; i < brightnessValues.getLampBrightness().size(); i++) {
+					if (i <= midpoint) {
+						newBrightness = (int) (previousBrightness / 1.4);
+					} else {
+						newBrightness = (int) (previousBrightness * 1.4);
+					}
+					totalBrightness = totalBrightness + newBrightness;
+					changedBrightnessValues.add(newBrightness);
+					previousBrightness = newBrightness;
+				}
+
+				BrightnessDTO outputValues = new BrightnessDTO();
+				outputValues.setLampBrightness(changedBrightnessValues);
+				outputValues.setEnvBrightness(brightnessValues
+						.getEnvBrightness());
+
+				System.out.println("Planner - Average Brightness: "
+						+ totalBrightness
+						/ brightnessValues.getLampBrightness().size());
+
+				this.sendData(gson.toJson(outputValues));
+				return gson.toJson(outputValues);
 			}
-			
-			String result = "";
-			for (String p: plan) {
-				result += p + "_";
-			}
-			
-			if (result.endsWith("_")) {
-				result = result.substring(0, result.lastIndexOf("_"));
-			}
-			
-			this.sendData(result);
-			
-			return result;
 		}
 		return null;
 	}

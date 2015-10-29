@@ -8,7 +8,8 @@
    		"de.mannheim.sos.tunnelSAS.analyzer.AnalyzerLogicAbstractDummy",
 		"de.mannheim.sos.tunnelSAS.model.Environment",
    		"de.mannheim.sos.tunnelSAS.model.Lamp",
-   		"de.mannheim.sos.tunnelSAS.model.Tunnel"
+   		"de.mannheim.sos.tunnelSAS.model.Tunnel",
+   		"de.mannheim.sos.tunnelSAS.model.BrightnessDTO"
    	],
 	"PROPERTIES": [
         {
