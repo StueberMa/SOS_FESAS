@@ -5,7 +5,10 @@
     "LOGIC_TYPE": "ANALYZER",
    	"PROGRAMMING_LANGUAGE": "Java",
    	"DEPENDENCIES": [
-   		"de.mannheim.sos.tunnelSAS.analyzer.AnalyzerLogicAbstractDummy"
+   		"de.mannheim.sos.tunnelSAS.analyzer.AnalyzerLogicAbstractDummy",
+		"de.mannheim.sos.tunnelSAS.model.Environment",
+   		"de.mannheim.sos.tunnelSAS.model.Lamp",
+   		"de.mannheim.sos.tunnelSAS.model.Tunnel"
    	],
 	"PROPERTIES": [
         {

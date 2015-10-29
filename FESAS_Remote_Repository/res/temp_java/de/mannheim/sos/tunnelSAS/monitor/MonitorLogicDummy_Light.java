@@ -1,5 +1,9 @@
-package de.mannheim.sos.tunnelSAS.monitor;
+package de.mannheim.wifo2.fesas.logicRepository.logicElements.monitor.de.mannheim.sos.tunnelSAS.monitor;
 
+
+import de.mannheim.wifo2.fesas.logicRepository.dependencies.de.mannheim.sos.tunnelSAS.monitor.MonitorLogicAbstractDummy;
+import de.mannheim.wifo2.fesas.logicRepository.dependencies.de.mannheim.sos.tunnelSAS.model.Environment;
+import de.mannheim.wifo2.fesas.logicRepository.dependencies.de.mannheim.sos.tunnelSAS.model.Lamp;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -14,7 +18,7 @@ import org.apache.http.impl.client.HttpClientBuilder;
 
 import com.google.gson.Gson;
 
-import de.mannheim.sos.tunnelSAS.model.Tunnel;
+import de.mannheim.wifo2.fesas.logicRepository.dependencies.de.mannheim.sos.tunnelSAS.model.Tunnel;
 import de.mannheim.wifo2.fesas.logicRepositoryStructure.data.metadata.logic.LogicType;
 import de.mannheim.wifo2.fesas.logicRepositoryStructure.data.metadata.logic.logicInterfaces.IMonitorLogic;
 import de.mannheim.wifo2.fesas.sasStructure.adaptationLogic.IAdaptationLogic;
@@ -54,7 +58,7 @@ public class MonitorLogicDummy_Light extends MonitorLogicAbstractDummy implement
 	public static void main(String args[]) {
 		try {
 			HttpClient httpClient = HttpClientBuilder.create().build();
-			HttpGet getRequest = new HttpGet("http://localhost:8080/TunnelController/services/tunnel/status");
+			HttpGet getRequest = new HttpGet("http://localhost:8080/TunnelController/services/tunnel/controller");
 			getRequest.addHeader("accept", "application/json");
 
 			HttpResponse response = httpClient.execute(getRequest);

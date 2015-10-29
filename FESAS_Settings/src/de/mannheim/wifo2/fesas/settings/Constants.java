@@ -38,7 +38,7 @@ public class Constants {
 	// Debugging
 	
 	/** Debug the initialization of the adaptation logic. */
-	public static final boolean DEBUG_FESASSETUP = false;
+	public static final boolean DEBUG_FESASSETUP = true;
 	/** Debug the saving and getting of knowledge. */
 	public static final boolean DEBUG_KNOWLEDGE = false;
 	/** Debug the communication and pub sub component. */
@@ -48,9 +48,9 @@ public class Constants {
 	/** Debug the logic element. */
 	public static final boolean DEBUG_LOGIC = true;
 	/** Debug the remote logic repository. */
-	public static final boolean DEBUG_REMOTE_LOGIC_REPOSITORY = false;
+	public static final boolean DEBUG_REMOTE_LOGIC_REPOSITORY = true;
 	/** Debug the GUI of the remote logic repository. */
-	public static final boolean DEBUG_REMOTE_LOGIC_REPOSITORY_GUI = false;
+	public static final boolean DEBUG_REMOTE_LOGIC_REPOSITORY_GUI = true;
 	/** Debug the logic logic repository. */
 	public static final boolean DEBUG_LOCAL_LOGIC_REPOSITORY = true;
 	/** Debug the result of the input for a logic (in callLogic()). */

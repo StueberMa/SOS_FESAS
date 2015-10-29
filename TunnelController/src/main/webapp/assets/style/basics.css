@@ -1,0 +1,41 @@
+h1 {
+	margin-bottom: 30px;
+}
+
+h3 {
+	margin-top: 75px;
+	margin-bottom: 10px;
+}
+
+img {
+	width: 80px;
+}
+
+td {
+	text-align: center;
+}
+
+.noHeading {
+	font-weight: normal;
+}
+
+.entrance {
+	padding-right: 25px;
+}
+
+.exit {
+	padding-left: 25px;
+}
+
+.subtitle {
+	font-style: italic;
+	margin:5px 0px 0px 0px;
+	width: 100%;
+}
+
+.tunnel {
+	background-color: #DDDDDD;
+	border-top: 3px solid #000000;
+	border-bottom: 3px solid #000000;
+	padding:10px;
+}
