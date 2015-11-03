@@ -16,7 +16,7 @@ angular.module("TunnelApp", []).controller("TunnelController", function($scope, 
 	    $timeout(function() {
 	      $scope.fetchObject();
 	      $scope.intervalFunction();
-	    }, 20000)
+	    }, 5000)
 	};
 	
 	$scope.inintFunction = function(){
